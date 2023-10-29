@@ -1,16 +1,15 @@
 import React from "react";
-import { Button } from 'react-boostrap'
+import { Button } from 'react-bootstrap'
 
 function CartWidget () {    
     return (
     <>
         <Button
-        className="bg-dark border-0 text-white fs-4 btn btn-dark"
+        className="bg-dark border-0 text-white fs-4 btn btn-dark position-relative"
+        aria-label="Ver carrito con 2 items"
         >
-
-        <i className="bi bi-cart"></i>
-        
-        <span className="position-absolute start-75 translate-middle badge rounded-pill bg-danger badge-Cart-Canvas"> 2 </span>
+        <i className="bi bi-cart-fill fs-4"></i>
+        <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 2 </span>
         </Button>
     </>
     );
