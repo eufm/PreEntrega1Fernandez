@@ -1,17 +1,16 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import CartWidget from "./CartWidget";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import "./NavBar.css";
 import logo from '../assets/logo.png';
-
 
 function NavBar() {
     return (
         <Navbar expand="lg" className="navbar-custom fixed-top shadow-sm">
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand as={Link} to="/">
                     <img alt="Logo" src={logo} className="logo d-inline-block align-top"/>
                 </Navbar.Brand>
 
@@ -19,12 +18,10 @@ function NavBar() {
 
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Inicio</Nav.Link>
-                        <Nav.Link href="#revistas">Revistas</Nav.Link>
-                        <Nav.Link href="#sobreNosotros">Sobre nosotros</Nav.Link>
-                        <Nav.Link href="#contacto">Contacto</Nav.Link>
+                        <Nav.Link as={Link} to="/">Inicio</Nav.Link>
+                        <Nav.Link as={Link} to="/category/aventura">Aventura</Nav.Link>
+                        <Nav.Link as={Link} to="/category/terror">Terror</Nav.Link>
                     </Nav>
-
                 </Navbar.Collapse>
 
                 <Nav>
