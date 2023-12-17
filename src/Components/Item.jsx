@@ -1,26 +1,44 @@
 import React from 'react';
-import ItemCount from './ItemCount';
+import { Card, Stack, CardBody, CardFooter, ButtonGroup, Divider, Heading, Button, Text } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../context/cartContext';
 
-function Item({ item }) {
-    if (!item) {
-        return <div>Cargando...</div>;
-    }
-
-    const { title, description, price, pictureUrl } = item;
+const Item = ({ item }) => {
+    const { addToCart } = useContext(CartContext);
+    const { id, name, price, pictureUrl } = item;
 
     const onAdd = (quantity) => {
-        console.log(`Añadido al carrito: ${title}, cantidad: ${quantity}`);
+        addToCart(item, quantity);
     };
 
     return (
-        <div className="item">
-            <img src={pictureUrl} alt={title} />
-            <h3>{title}</h3>
-            <p>{description}</p>
-            <p>${price}</p>
-            <ItemCount stock={10} initial={1} onAdd={onAdd} />
+        <div className='item'>
+            <Card maxW='sm' m='5'>
+                <CardBody>
+                    <img className='itemImg' src={pictureUrl} alt={name} />
+                    <Stack mt='6' spacing='3'>
+                        <Heading size='md'>{name}</Heading>
+                        <Text color='blackAlpha.800' fontSize='2xl'>
+                            ${price}
+                        </Text>
+                    </Stack>
+                </CardBody>
+                <Divider />
+                <CardFooter>
+                    <ButtonGroup spacing='2'>
+                        <Link to={`/item/${id}`}>
+                            <Button variant='solid' colorScheme='blackAlpha'>
+                                Details
+                            </Button>
+                        </Link>
+                        <ItemCount initial={1} stock={10} onAdd={onAdd} />
+                    </ButtonGroup>
+                </CardFooter>
+            </Card>
         </div>
     );
-}
+};
 
 export default Item;
+

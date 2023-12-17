@@ -1,17 +1,18 @@
-import React from "react";
-import { Button } from 'react-bootstrap'
+import React, { useContext } from 'react';
+import { BsFillCartFill } from "react-icons/bs";
+import { CartContext } from '../context/cartContext';
+import { Link } from 'react-router-dom';
 
-function CartWidget () {    
+const CartWidget = () => {
+    const { totalQuantity } = useContext(CartContext);
+
     return (
-    <>
-        <Button
-        className="bg-dark border-0 text-white fs-4 btn btn-dark position-relative"
-        aria-label="Ver carrito con 2 items"
-        >
-        <i className="bi bi-cart-fill fs-4"></i>
-        <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 2 </span>
-        </Button>
-    </>
+        <Link to={'/cart'}>
+            <BsFillCartFill />
+            {totalQuantity > 0 && (
+                <span>{totalQuantity}</span>
+            )}
+        </Link>
     );
 }
 

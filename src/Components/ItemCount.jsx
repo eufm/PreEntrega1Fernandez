@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Button, Badge } from '@chakra-ui/react';
 
-function ItemCount({ stock, initial, onAdd }) {
+const ItemCount = ({ initial, stock, onAdd }) => {
     const [count, setCount] = useState(initial);
 
     const handleIncrement = () => {
@@ -10,25 +11,31 @@ function ItemCount({ stock, initial, onAdd }) {
     };
 
     const handleDecrement = () => {
-        if (count > 0) {
+        if (count > initial) {
             setCount(count - 1);
         }
     };
 
-    const handleOnAdd = () => {
-        if (count > 0 && count <= stock) {
-            onAdd(count);
-        }
-    };
-
     return (
-        <div>
-            <button onClick={handleDecrement}>-</button>
-            <span>{count}</span>
-            <button onClick={handleIncrement}>+</button>
-            <button onClick={handleOnAdd}>Agregar al carrito</button>
-        </div>
+        <>
+            <div className='countContainer'>
+                <div className='classCount'>
+                    <Button colorScheme='blackAlpha.900' variant='ghost' onClick={handleDecrement}>
+                        -
+                    </Button>
+                    <Badge colorScheme='blackAlpha.900'>{count}</Badge>
+                    <Button colorScheme='blackAlpha.900' variant='ghost' onClick={handleIncrement}>
+                        +
+                    </Button>
+                </div>
+                <div className='classCount'>
+                    <Button variant='solid' colorScheme='blackAlpha' onClick={() => onAdd(count)}>
+                        Add to Cart
+                    </Button>
+                </div>
+            </div>
+        </>
     );
-}
+};
 
 export default ItemCount;

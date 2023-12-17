@@ -18,9 +18,9 @@ function NavBar() {
 
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link as={Link} to="/">Inicio</Nav.Link>
-                        <Nav.Link as={Link} to="/category/aventura">Aventura</Nav.Link>
-                        <Nav.Link as={Link} to="/category/terror">Terror</Nav.Link>
+                        <Nav.Link as={Link} to="/">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/category/aventura">Adventure</Nav.Link>
+                        <Nav.Link as={Link} to="/category/terror">Horror</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
 
